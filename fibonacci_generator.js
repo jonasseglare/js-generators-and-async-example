@@ -5,12 +5,13 @@ function* fibonacci() {
     var nextA = b;
     var b = a + b;
     var a = nextA;
-    yield a;
+    var index = yield a;
+    console.log("POSTED value for %j", index);
   }
 }
 
 var fib = fibonacci();
 
 for (var i = 0; i < 30; i++) {
-  console.log("Fib %d is %j", i, fib.next().value);
+  console.log("Fib %d is %j", i, fib.next(i).value);
 }
